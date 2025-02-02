@@ -146,7 +146,7 @@ function detectScrollDirection() {
           const cotana = document.querySelector(".cotana");
           cotana.classList.add("h-[155px]");
           
-      }, 10000);
+      }, 60000);
 
   
 
