@@ -1,0 +1,26 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "package.json",
+  "main": "tailwind.config.js",
+  "dependencies": {
+    "@glidejs/glide": "^3.7.1",
+    "@splidejs/splide": "^4.1.4",
+    "accordion-js": "^3.4.0",
+    "animate.css": "^4.1.1",
+    "animejs": "^3.2.2",
+    "autoprefixer": "^10.4.7",
+    "dayjs": "^1.11.13",
+    "postcss": "^8.4.14",
+    "tiny-swiper": "^2.2.0",
+    "typeit": "^8.8.7"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.15"
+  },
+  "scripts": {
+    "build-css": "npx tailwindcss -i ./css/input.css -o ./css/output.css --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}

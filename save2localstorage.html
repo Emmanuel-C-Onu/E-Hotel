@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOW.js Demo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  
+    .container {
+      width: 300px;
+      margin: 20px auto;
+      text-align: center;
+    }
+  
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="bg-gray-100 p-3 rounded-md">
+  <ol class="flex items-center space-x-2">
+    <li>
+      <a href="#" class="text-blue-600 hover:underline">Home</a>
+    </li>
+    <li>
+      <span class="text-gray-500">/</span>
+    </li>
+    <li>
+      <a href="#" class="text-blue-600 hover:underline">Category</a>
+    </li>
+    <li>
+      <span class="text-gray-500">/</span>
+    </li>
+    <li class="text-gray-700 font-semibold">Current Page</li>
+  </ol>
+</nav>
+
+
+  <!-- <h1 class="wow animate__animated animate__fadeInDown">Hello WOW.js!</h1>
+  <p class="wow animate__animated animate__zoomIn" data-wow-delay="0.5s">Smooth scroll animations.</p> -->
+
+
+  <form id="myForm" class="form-datas">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <br><br>
+    <button>Save Data</button>
+  </form>
+
+
+
+
+  
+   
+    <div class="container">
+      <label for="rangeInput">Select a value</label>
+      <input type="range" id="rangeInput" min="10" max="50" value="30">
+      <p>Current Value: <span id="rangeValue">30</span></p>
+      <p class="error" id="errorMessage"></p>
+    </div>
+  
+    <script>
+      const rangeInput = document.getElementById("rangeInput");
+      const rangeValue = document.getElementById("rangeValue");
+      const errorMessage = document.getElementById("errorMessage");
+
+      rangeInput.addEventListener("input", function () {
+        let value = parseInt(rangeInput.value, 10);
+        rangeValue.textContent = value; // Update value in the DOM
+
+        // Validation check
+        if (value < 10 || value > 50) {
+          errorMessage.textContent = "Value is out of range!";
+        } else {
+          errorMessage.textContent = "";
+        }
+      });
+   
+ 
+
+  
+    
+
+    document.querySelector('.form-datas')
+      .addEventListener('submit', (e) => {
+        e.preventDefault()
+         // Get and validate form values
+        let userName = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+
+        let isValid = true
+
+        if (userName === "") {
+          alert("Name is Required")
+          isValid = false
+        }
+        else if (email === "") {
+          alert("Email is Required")
+          isValid = false
+        }else{
+          let myArray = JSON.parse(localStorage.getItem('myArray')) || [];
+
+           // Create an object to store the data
+          const formData = {
+            name: userName,
+            email: email
+          };
+
+          
+          myArray.push(formData)
+           // Save the object in local storage
+          localStorage.setItem('myArray', JSON.stringify(myArray));
+          isValid = true
+
+           console.log(myArray)
+        }
+      });
+
+
+      function CountDown() {
+          let count = 10;
+          let intervalID = setInterval(() => {
+          count--;
+          console.log(count);
+
+           if (count === 0) {
+              clearInterval(intervalID); // Stops the interval after 5 executions
+              console.log("Counting Ended!");
+            }
+        }, 1000);         
+        }
+
+        CountDown(); // Output: 1, 2, 3, 4, ...
+
+
+
+/*
+  let count = 0;
+
+  // Start an interval that runs every second
+  let intervalID = setInterval(() => {
+    count++;
+    console.log("Count:", count);
+
+    if (count === 5) {
+      clearInterval(intervalID); // Stops the interval after 5 executions
+      console.log("Interval stopped!");
+    }
+  }, 1000);
+
+*/
+   
+  </script>
+
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script> new WOW().init(); </script> -->
+</body>
+
+</html>
